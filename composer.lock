@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cd40a26581990ebd9bcb8354ee4b5f0b",
-    "content-hash": "63668719e6c097890e6d1dfc8576f994",
+    "hash": "cefc29a81ccbf04f25f92c65cd6ea596",
+    "content-hash": "a14edc7420dce6f474d8681e4666f5a9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -284,6 +284,63 @@
             "time": "2015-12-26 08:54:38"
         },
         {
+            "name": "doctrine/data-fixtures",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/data-fixtures.git",
+                "reference": "b4213c21f138c96c29ba2f57349d6fca5b2878a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/b4213c21f138c96c29ba2f57349d6fca5b2878a9",
+                "reference": "b4213c21f138c96c29ba2f57349d6fca5b2878a9",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "~2.2",
+                "php": ">=5.3.2"
+            },
+            "conflict": {
+                "doctrine/orm": "< 2.4"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.4"
+            },
+            "suggest": {
+                "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
+                "doctrine/orm": "For loading ORM fixtures",
+                "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\DataFixtures": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                }
+            ],
+            "description": "Data Fixtures for all Doctrine Object Managers",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "database"
+            ],
+            "time": "2015-11-02 22:38:12"
+        },
+        {
             "name": "doctrine/dbal",
             "version": "dev-master",
             "source": {
@@ -522,6 +579,63 @@
             "time": "2015-12-15 19:13:11"
         },
         {
+            "name": "doctrine/doctrine-fixtures-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
+                "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/0f1a2f91b349e10f5c343f75ab71d23aace5b029",
+                "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/data-fixtures": "~1.0",
+                "doctrine/doctrine-bundle": "~1.0",
+                "php": ">=5.3.2",
+                "symfony/doctrine-bridge": "~2.3|~3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Bundle\\FixturesBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Doctrine Project",
+                    "homepage": "http://www.doctrine-project.org"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony DoctrineFixturesBundle",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "Fixture",
+                "persistence"
+            ],
+            "time": "2015-11-04 21:23:23"
+        },
+        {
             "name": "doctrine/inflector",
             "version": "dev-master",
             "source": {
@@ -694,6 +808,53 @@
                 "sql"
             ],
             "time": "2015-08-30 16:36:01"
+        },
+        {
+            "name": "jupeter/doctrine-dump-fixtures-bundle",
+            "version": "dev-master",
+            "target-dir": "TeamLab/Bundle/FixturesBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jupeter/DoctrineDumpFixturesBundle.git",
+                "reference": "1f6770e8f16d4557fa2a68d5c70002b79eed30a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jupeter/DoctrineDumpFixturesBundle/zipball/1f6770e8f16d4557fa2a68d5c70002b79eed30a1",
+                "reference": "1f6770e8f16d4557fa2a68d5c70002b79eed30a1",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-fixtures-bundle": "*",
+                "php": ">=5.3.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "TeamLab\\Bundle\\FixturesBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Piotr Plenik",
+                    "email": "piotr.plenik@gmail.com"
+                }
+            ],
+            "description": "Symfony DoctrineDumpFixturesBundle",
+            "keywords": [
+                "Fixture",
+                "persistence"
+            ],
+            "time": "2014-12-04 19:41:40"
         },
         {
             "name": "paragonie/random_compat",
@@ -3339,7 +3500,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "jupeter/doctrine-dump-fixtures-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
