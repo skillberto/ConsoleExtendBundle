@@ -1,0 +1,87 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: heiszler_n
+ * Date: 2016.01.08.
+ * Time: 16:31
+ */
+
+namespace Skillberto\ConsoleExtendBundle\Tests\Command;
+
+use Skillberto\ConsoleExtendBundle\Tests\Command\Fixture\TestAppKernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Config\ConfigCacheFactory;
+use Symfony\Component\Config\Resource\ResourceInterface;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+
+class CacheClearCommandTest extends \PHPUnit_Framework_TestCase
+{
+    /** @var TestAppKernel */
+    private $kernel;
+    /** @var Filesystem */
+    private $fs;
+    private $rootDir;
+
+    protected function setUp()
+    {
+        $this->fs = new Filesystem();
+        $this->kernel = new TestAppKernel('test', true);
+        $this->rootDir = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('sf2_cache_', true);
+        $this->kernel->setRootDir($this->rootDir);
+        $this->fs->mkdir($this->rootDir);
+    }
+
+    protected function tearDown()
+    {
+        $this->fs->remove($this->rootDir);
+    }
+
+    public function testCacheIsFreshAfterCacheClearedWithWarmup()
+    {
+        $arguments = array(
+            'command' => 'cache:clear',
+            '-m'      => 1024,
+        );
+
+        $input = new ArrayInput($arguments);
+        $application = new Application($this->kernel);
+        $application->setCatchExceptions(false);
+
+        $application->doRun($input, new NullOutput());
+
+        // Ensure that all *.meta files are fresh
+        $finder = new Finder();
+        $metaFiles = $finder->files()->in($this->kernel->getCacheDir())->name('*.php.meta');
+        // simply check that cache is warmed up
+        $this->assertGreaterThanOrEqual(1, count($metaFiles));
+        $configCacheFactory = new ConfigCacheFactory(true);
+        $that = $this;
+
+        foreach ($metaFiles as $file) {
+            $configCacheFactory->cache(substr($file, 0, -5), function () use ($that, $file) {
+                $that->fail(sprintf('Meta file "%s" is not fresh', (string) $file));
+            });
+        }
+
+        // check that app kernel file present in meta file of container's cache
+        $containerRef = new \ReflectionObject($this->kernel->getContainer());
+        $containerFile = $containerRef->getFileName();
+        $containerMetaFile = $containerFile.'.meta';
+        $kernelRef = new \ReflectionObject($this->kernel);
+        $kernelFile = $kernelRef->getFileName();
+        /** @var ResourceInterface[] $meta */
+        $meta = unserialize(file_get_contents($containerMetaFile));
+        $found = false;
+        foreach ($meta as $resource) {
+            if ((string) $resource === $kernelFile) {
+                $found = true;
+                break;
+            }
+        }
+        $this->assertTrue($found, 'Kernel file should present as resource');
+        $this->assertRegExp(sprintf('/\'kernel.name\'\s*=>\s*\'%s\'/', $this->kernel->getName()), file_get_contents($containerFile), 'kernel.name is properly set on the dumped container');
+    }
+}

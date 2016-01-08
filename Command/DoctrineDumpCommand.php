@@ -2,6 +2,7 @@
 
 namespace Skillberto\ConsoleExtendBundle\Command;
 
+use Doctrine\ORM\EntityManager;
 use TeamLab\Bundle\FixturesBundle\Command\DoctrineDumpCommand as BaseCommand;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +18,7 @@ class DoctrineDumpCommand extends BaseCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var EntityManager $em */
-        $em = $this->getContainer()->get('doctrine')->getManager();
+        $em = $this->getEntityManager();
         $entities = $em->getConfiguration()->getMetadataDriverImpl()->getAllClassNames();
 
         if ($input->isInteractive()) {
@@ -54,5 +55,14 @@ class DoctrineDumpCommand extends BaseCommand
         }
 
         exit(0);
+    }
+
+    /**
+     * @return EntityManager
+     */
+    protected function getEntityManager()
+    {
+        $em = $this->getContainer()->get('doctrine')->getManager();
+        return $em;
     }
 }
