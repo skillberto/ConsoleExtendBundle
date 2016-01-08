@@ -13,6 +13,6 @@ class GenerateEntitiesDoctrineCommandTest extends \PHPUnit_Framework_TestCase
 {
     public function testGenerate()
     {
-        
+
     }
 }
