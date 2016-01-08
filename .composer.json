@@ -1,0 +1,27 @@
+{
+  "name": "skillberto/consoleextend-bundle",
+  "type": "skillberto-bundle",
+  "description": "ConsoleExtendBundle for the Symfony Framework"",
+  "keywords": [],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Norbert Heiszler",
+      "email": "heiszler.norbert@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.9",
+    "doctrine/doctrine-bundle": "~1.6",
+    "symfony/framework-bundle": "~2.3 | ~3.0"
+  },
+  "autoload": {
+    "psr-4": { "Skillberto\\ConsoleExtendBundle": "" }
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
