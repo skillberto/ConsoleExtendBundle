@@ -9,6 +9,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DoctrineDumpCommand extends BaseCommand
 {
+    protected function configure()
+    {
+        parent::configure();
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var EntityManager $em */
