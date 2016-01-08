@@ -23,7 +23,7 @@
     "phpunit/phpunit": "~4"
   },
   "autoload": {
-    "psr-4": { "Skillberto\\ConsoleExtendBundle": "" }
+    "psr-4": { "Skillberto\\ConsoleExtendBundle\\": "" }
   },
   "minimum-stability": "dev",
   "extra": {
