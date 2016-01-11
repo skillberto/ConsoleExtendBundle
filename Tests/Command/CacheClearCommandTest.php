@@ -46,6 +46,18 @@ class CacheClearCommandTest extends \PHPUnit_Framework_TestCase
             '-m'      => 1024,
         );
 
+        $this->coreTest($arguments);
+
+        $arguments = array(
+            'command'        => 'cache:clear',
+            '--memory_limit' => 1024,
+        );
+
+        $this->coreTest($arguments);
+    }
+
+    protected function coreTest(array $arguments)
+    {
         $input = new ArrayInput($arguments);
         $application = new Application($this->kernel);
         $application->setCatchExceptions(false);
@@ -83,5 +95,6 @@ class CacheClearCommandTest extends \PHPUnit_Framework_TestCase
         }
         $this->assertTrue($found, 'Kernel file should present as resource');
         $this->assertRegExp(sprintf('/\'kernel.name\'\s*=>\s*\'%s\'/', $this->kernel->getName()), file_get_contents($containerFile), 'kernel.name is properly set on the dumped container');
+        $this->assertEquals(ini_get('memory_limit'), '1024M');
     }
 }
