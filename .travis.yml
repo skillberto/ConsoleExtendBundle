@@ -36,4 +36,4 @@ install:
   - composer install
 
 script:
-  - phpunit --coverage-text
+  - phpunit --coverage-text --colors
