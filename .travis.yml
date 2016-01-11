@@ -1,12 +1,7 @@
 language: php
 
-sudo: false
-
-cache:
-  directories:
-    - $HOME/.composer/cache
-
 php:
+  - 5.3
   - 5.4
   - 5.5
   - 5.6
@@ -14,33 +9,32 @@ php:
   - hhvm
 
 matrix:
+  fast_finish: true
   include:
-    - php: 5.4
-      env: deps=low SYMFONY_DEPRECATIONS_HELPER=weak
+    - php: 5.3
+      env: COMPOSER_FLAGS="--prefer-lowest"
     - php: 5.6
-      env: SYMFONY_VERSION="2.3.*"
+      env: SYMFONY_VERSION=2.3.*
     - php: 5.6
-      env: SYMFONY_VERSION="2.8.*@dev"
+      env: SYMFONY_VERSION=2.7.*
     - php: 5.6
-      env: SYMFONY_VERSION="3.0.*@dev"
+      env: SYMFONY_VERSION=2.8.*
+    - php: 5.6
+      env: SYMFONY_VERSION=3.0.*
+  allow_failures:
+    - php: hhvm
 
-env:
-  global:
-    - deps=no
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_install:
-  - composer self-update
-  - if [ "$SYMFONY_VERSION" != "" ]; then composer require --no-update symfony/symfony:${SYMFONY_VERSION}; fi;
+  - composer selfupdate
+  - if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
 
-install:
-  - if [ "$deps" = "no" ]; then composer update; fi;
-  - if [ "$deps" = "low" ]; then composer --prefer-lowest --prefer-stable update; fi;
-
-before_script:
-  - phpenv config-rm xdebug.ini
+install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
-  - ./vendor/bin/phpunit -v --coverage-clover ./build/logs/clover.xml
-
-after_script:
-    - php ./vendor/bin/coveralls -v
+  - phpunit --coverage-text
