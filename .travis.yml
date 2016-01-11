@@ -36,6 +36,9 @@ install:
   - if [ "$deps" = "no" ]; then composer update; fi;
   - if [ "$deps" = "low" ]; then composer --prefer-lowest --prefer-stable update; fi;
 
+before_script:
+  - phpenv config-rm xdebug.ini
+
 script:
   - ./vendor/bin/phpunit -v --coverage-clover ./build/logs/clover.xml
 
