@@ -1,4 +1,4 @@
-# consoleextend-bundle
+# ConsoleExtendBundle
 
 [![Build Status](https://travis-ci.org/skillberto/ConsoleExtendBundle.svg?branch=master)](https://travis-ci.org/skillberto/ConsoleExtendBundle)
 
