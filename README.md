@@ -1,6 +1,6 @@
 # consoleextend-bundle
 
-[![Build Status](https://travis-ci.org/skillberto/consoleextend-bundle.svg?branch=master)](https://travis-ci.org/skillberto/consoleextend-bundle)
+[![Build Status](https://travis-ci.org/skillberto/ConsoleExtendBundle.svg?branch=master)](https://travis-ci.org/skillberto/ConsoleExtendBundle)
 
 This Bundle has been created for Symfony Framework.
 
