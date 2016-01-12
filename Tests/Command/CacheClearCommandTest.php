@@ -25,9 +25,16 @@ class CacheClearCommandTest extends KernelTestCase
         self::bootKernel();
     }
 
+    protected function tearDown()
+    {
+        $fs = new Filesystem();
+        $fs->remove(__DIR__.'/../app/cache');
+        $fs->remove(__DIR__.'/../app/logs');
+    }
+
     public function testCacheIsFreshAfterCacheClearedWithWarmup()
     {
-        $arguments = array(
+       $arguments = array(
             'command' => 'cache:clear',
             '-m'      => 1024,
         );
@@ -83,4 +90,5 @@ class CacheClearCommandTest extends KernelTestCase
         $this->assertRegExp(sprintf('/\'kernel.name\'\s*=>\s*\'%s\'/', static::$kernel->getName()), file_get_contents($containerFile), 'kernel.name is properly set on the dumped container');
         $this->assertEquals(ini_get('memory_limit'), '1024M');
     }
+
 }

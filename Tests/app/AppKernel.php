@@ -1,7 +1,5 @@
 <?php
 
-use Skillberto\ConsoleExtendBundle\SkillbertoConsoleExtendBundle;
-use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
@@ -10,8 +8,9 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         return array(
-            new FrameworkBundle(),
-            new SkillbertoConsoleExtendBundle(),
+            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new \Skillberto\ConsoleExtendBundle\SkillbertoConsoleExtendBundle(),
         );
     }
 
