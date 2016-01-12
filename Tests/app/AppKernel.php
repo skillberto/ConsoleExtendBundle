@@ -1,22 +1,11 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Skillberto\ConsoleExtendBundle\Tests\Command\Fixture;
-
 use Skillberto\ConsoleExtendBundle\SkillbertoConsoleExtendBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
-class TestAppKernel extends Kernel
+class AppKernel extends Kernel
 {
     public function registerBundles()
     {
@@ -33,6 +22,6 @@ class TestAppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__.DIRECTORY_SEPARATOR.'config.yml');
+        $loader->load(__DIR__.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.yml');
     }
 }

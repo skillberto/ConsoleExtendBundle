@@ -1,0 +1,12 @@
+Skillberto\ConsoleExtendBundle\Entity\TestExtended:
+  type: entity
+  table: skillberto_test_extended
+  id:
+    id:
+      type: integer
+      column: id
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: text

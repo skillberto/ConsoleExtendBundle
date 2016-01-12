@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit colors="true" bootstrap="vendor/autoload.php">
+    <php>
+        <server name="KERNEL_DIR" value="./Tests/app" />
+    </php>
     <testsuites>
         <testsuite name="ConsoleExtendBundle for the Symfony Framework">
-            <directory>./Tests/</directory>
+            <directory>./Tests/Command/</directory>
         </testsuite>
     </testsuites>
 
