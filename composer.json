@@ -1,6 +1,6 @@
 {
   "name": "skillberto/consoleextend-bundle",
-  "type": "skillberto-bundle",
+  "type": "symfony-bundle",
   "description": "ConsoleExtendBundle for the Symfony Framework",
   "keywords": [],
   "license": "MIT",
