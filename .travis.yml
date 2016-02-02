@@ -27,11 +27,12 @@ cache:
     - $HOME/.composer/cache
 
 before_install:
+  - phpenv config-rm xdebug.ini
   - composer selfupdate
   - if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
 
 install:
-  - composer install
+  - php -d memory_limit=-1 composer install
 
 script:
   - phpunit --coverage-text --colors
