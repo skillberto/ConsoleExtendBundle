@@ -23,7 +23,7 @@ class CacheClearCommandTest extends WebTestCase
     protected function setUp()
     {
         // BC, SF >=2.5
-        if (method_exists(self, 'bootKernel')) {
+        if (method_exists($this, 'bootKernel')) {
             self::bootKernel();
         } else {
             if (null !== static::$kernel) {
