@@ -22,7 +22,16 @@ class CacheClearCommandTest extends WebTestCase
 {
     protected function setUp()
     {
-        self::bootKernel();
+        // BC, SF >=2.5
+        if (method_exists(self, 'bootKernel')) {
+            self::bootKernel();
+        } else {
+            if (null !== static::$kernel) {
+                static::$kernel->shutdown();
+            }
+            static::$kernel = static::createKernel();
+            static::$kernel->boot();
+        }
     }
 
     protected function tearDown()
