@@ -11,10 +11,10 @@
     }
   ],
   "require": {
-    "php": ">=5.5",
+    "php": ">=5.4",
     "doctrine/doctrine-bundle": "~1.6",
-    "symfony/framework-bundle": "~2.3",
-    "symfony/console": "~2.3",
+    "symfony/framework-bundle": "~2.3|~3.0",
+    "symfony/console": "~2.3|~3.0",
     "jupeter/doctrine-dump-fixtures-bundle": "0.1.x-dev"
   },
   "require-dev": {
