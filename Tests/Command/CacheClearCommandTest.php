@@ -10,7 +10,7 @@ namespace Skillberto\ConsoleExtendBundle\Tests\Command;
 
 use Skillberto\ConsoleExtendBundle\Tests\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Config\ConfigCacheFactory;
 use Symfony\Component\Config\Resource\ResourceInterface;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-class CacheClearCommandTest extends KernelTestCase
+class CacheClearCommandTest extends WebTestCase
 {
     protected function setUp()
     {
