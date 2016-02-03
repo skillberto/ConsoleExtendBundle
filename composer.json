@@ -1,5 +1,5 @@
 {
-  "name": "skillberto/consoleextend-bundle",
+  "name": "skillberto/console-extend-bundle",
   "type": "symfony-bundle",
   "description": "ConsoleExtendBundle for the Symfony Framework",
   "keywords": [],
