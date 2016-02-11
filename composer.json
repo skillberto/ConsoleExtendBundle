@@ -1,34 +1,33 @@
 {
-  "name": "skillberto/console-extend-bundle",
-  "type": "symfony-bundle",
-  "description": "ConsoleExtendBundle for the Symfony Framework",
-  "keywords": [],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Norbert Heiszler",
-      "email": "heiszler.norbert@gmail.com"
+    "name": "skillberto/console-extend-bundle",
+    "type": "symfony-bundle",
+    "description": "ConsoleExtendBundle for the Symfony Framework",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Norbert Heiszler",
+            "email": "heiszler.norbert@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/doctrine-bundle": "~1.6",
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "symfony/console": "~2.3|~3.0",
+        "jupeter/doctrine-dump-fixtures-bundle": "0.1.x-dev"
+    },
+    "require-dev": {
+        "doctrine/orm": "~2.3",
+        "satooshi/php-coveralls": "~0.6.1",
+        "phpunit/phpunit": "~4"
+    },
+    "autoload": {
+        "psr-4": { "Skillberto\\ConsoleExtendBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.4",
-    "doctrine/doctrine-bundle": "~1.6",
-    "symfony/framework-bundle": "~2.3|~3.0",
-    "symfony/console": "~2.3|~3.0",
-    "jupeter/doctrine-dump-fixtures-bundle": "0.1.x-dev"
-  },
-  "require-dev": {
-    "doctrine/orm": "~2.3",
-    "satooshi/php-coveralls": "~0.6.1",
-    "phpunit/phpunit": "~4"
-  },
-  "autoload": {
-    "psr-4": { "Skillberto\\ConsoleExtendBundle\\": "" }
-  },
-  "minimum-stability": "dev",
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev"
-    }
-  }
 }
