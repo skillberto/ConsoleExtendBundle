@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Command\CacheClearCommand as BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Class CacheClearCommand
@@ -33,5 +34,14 @@ class CacheClearCommand extends BaseCommand
         ini_set("memory_limit", $memory."M");
 
         parent::execute($input, $output);
+
+        $container = $this->getContainer();
+
+        $cacheDir = $container->getParameter('kernel.cache_dir');
+        $chmod = $container->getParameter('skillberto_console_extend.chmod');
+
+        /** @var Filesystem $fs */
+        $fs = $container->get('filesystem');
+        $fs->chmod($cacheDir, $chmod, 0000, true);
     }
 } 
