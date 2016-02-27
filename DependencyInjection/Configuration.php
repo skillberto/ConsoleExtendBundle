@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->integerNode('default_chmod')
-                    ->defaultValue(777)
+                    ->defaultValue(0777)
                 ->end()
             ->end()
         ;
