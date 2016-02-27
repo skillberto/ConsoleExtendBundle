@@ -8,6 +8,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class SkillbertoConsoleExtendBundle extends Bundle
 {
+    public function getParent()
+    {
+        return 'FrameworkBundle';
+    }
+
     public function registerCommands(Application $application)
     {
         parent::registerCommands($application);

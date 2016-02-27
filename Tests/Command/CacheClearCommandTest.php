@@ -23,6 +23,10 @@ class CacheClearCommandTest extends WebTestCase
 {
     protected function setUp()
     {
+        $fs = new Filesystem();
+        $fs->remove(__DIR__.'/../app/cache/*');
+        $fs->remove(__DIR__.'/../app/logs/*');
+
         // BC, SF >=2.5
         if (method_exists($this, 'bootKernel')) {
             self::bootKernel();
@@ -33,13 +37,6 @@ class CacheClearCommandTest extends WebTestCase
             static::$kernel = static::createKernel();
             static::$kernel->boot();
         }
-    }
-
-    protected function tearDown()
-    {
-        $fs = new Filesystem();
-        $fs->remove(__DIR__.'/../app/cache');
-        $fs->remove(__DIR__.'/../app/logs');
     }
 
     public function testCacheIsFreshAfterCacheClearedWithWarmup()
