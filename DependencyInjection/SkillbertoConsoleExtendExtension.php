@@ -5,7 +5,7 @@ namespace Skillberto\ConsoleExtendBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
-class ConsoleExtendExtension extends Extension
+class SkillbertoConsoleExtendExtension extends Extension
 {
     /**
      * {@inheritdoc}
